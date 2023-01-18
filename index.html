@@ -2,13 +2,16 @@
 <html>
 <body>
 
-<h2>Get the current URL</h2>
-
 <p id="demo"></p>
 
 <script>
-document.getElementById("demo").innerHTML = 
-"The full URL of this page is:<br>" + window.location.href;
+var pageurl = window.location.href;
+var str = pageurl;
+arr = str.split("#");
+arr.shift();
+str = arr.join("#");
+document.getElementById("demo").innerHTML = "https://www.google.com/search?q=" + str;
+
 </script>
 
 </body>
