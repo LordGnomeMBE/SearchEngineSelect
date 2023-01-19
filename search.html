@@ -1,16 +1,68 @@
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="icon" type="image/x-icon" href="https://cdn.iconscout.com/icon/free/png-256/search-3114501-2598133.png">
+  <title>Search - SearchEngineSelect</title>
+
+<style>
+.searchbar {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 10px 10px;
+  margin-top: 10px;
+  margin-bottom:20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius:15px;
+  border:3px solid black;
+}
+.searchbutton {
+  background-color: red;
+  border: none;
+  color: white;
+  padding: 10px 12px;
+  margin-top: 10px;
+  margin-bottom:20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius:30px;
+  border:3px solid red;
+  vertical-align: middle;
+}
+.searchbutton:hover {
+  background-color: white;
+  color: black;
+  border:3px solid black;
+}
+
+.searchbar:hover {
+  background-color: white;
+  color: black;
+  border:3px solid red;
+}
+
+</style>
 <body>
 
-<input type="text" id="myText" value="Search Query"> <button onclick="myFunction()">Try it</button>
+<center>
+</br>
+</br>
+<h1 style="font-family:arial;color:red">Search<i>Engine</i>Select</h1>
 
+<div>
+<input type="text" id="myText" placeholder="Search Something..." class="searchbar" style="width:60%;height:30%;font-size:20px"> <button onclick="myFunction()" class="searchbutton"><i style="font-size:18px;" class="fa fa-rotate-90">&#xf002;</i></button>
+</div>
+
+<p style="font-family:arial;">Send a search query to SearchEngineSelect</p>
+</center>
 <p id="demo"></p>
 
 <script>
 function myFunction() {
   var x = document.getElementById("myText").value;
   var url = "https://lordgnomembe.github.io/SearchEngineSelect/#" + x;
-  document.getElementById("demo").innerHTML =  "<meta http-equiv='refresh' content='0; url='" + url + "'' />;"
+  location.replace(url);
 }
 </script>
 
