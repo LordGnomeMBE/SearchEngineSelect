@@ -20,7 +20,7 @@
   margin-bottom:0px;
   border: none;
   color: white;
-  padding: 10px 10px;
+  padding: 12px 16px;
   font-size: 16px;
   cursor: pointer;
   border-radius:15px;
@@ -39,7 +39,7 @@
   margin-bottom:0px;
   border: none;
   color: white;
-  padding: 10px 10px;
+  padding: 12px 16px;
   font-size: 16px;
   cursor: pointer;
   border-radius:15px;
@@ -58,7 +58,7 @@
   margin-bottom:0px;
   border: none;
   color: white;
-  padding: 10px 10px;
+  padding: 12px 16px;
   font-size: 16px;
   cursor: pointer;
   border-radius:15px;
@@ -166,14 +166,142 @@
   border:3px solid #2f70f0;
 }
 
+.settings {
+  background-color: white;
+  border: none;
+  color: black;
+  padding: 20px 100px;
+  padding-top: 0px;
+  margin-top: 10px;
+  margin-bottom:20px;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius:15px;
+  border:3px solid black;
+}
 
+#footer {
+    position:fixed;
+    right:0;
+    top:0;
+    margin: 15px;
+}
+#footerback,
+#footernext {
+    text-align: center;  
+    background-color: lightgrey;
+    font-family: arial;
+    float: left;
+    padding:5px;
+    border-radius: 20px;
+    margin-right: 5px;
+    border: 3px solid black;      
+}
+.overlay {
+  height: 100%;
+  width: 100%;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: white;
+}
+
+.overlay-content {
+  position: relative;
+  top: 25%;
+  width: 100%;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.overlay a {
+  padding: 8px;
+  text-decoration: none;
+  font-size: 36px;
+  color: black;
+  display: block;
+  transition: 0.3s;
+}
+
+.overlay a:hover, .overlay a:focus {
+  color: black;
+}
+
+.overlay .closebtn {
+  position: absolute;
+  top: 20px;
+  right: 45px;
+  font-size: 60px;
+}
+
+@media screen and (max-height: 450px) {
+  .overlay a {font-size: 20px}
+  .overlay .closebtn {
+  font-size: 40px;
+  top: 15px;
+  right: 35px;
+  }
+}
 </style>
 <center>
+<div id="footer">
+    <div id="footerback" onclick="openNav()" style="cursor: pointer;width:20px;"><i class='fa fa-cog'></i></div>
+    <div id="footernext" onclick='window.location.href="https://example.com";' style="cursor: pointer;">How to use</div>
+</div>
 
+<div id="myNav" class="overlay" style="font-family:arial">
+</br><h1 style="font-weight:normal">Settings</h1>
+<p>Unfortunately these settings do not currently save between uses or reloads, and are only temporary.</p>
+<button class='settings'><h3 style="font-weight:normal"><i class='fa fa-paint-brush'></i> Design</h3>
+<form>
+  Background Colour:
+  <select name="backGround" size="1" onChange=(document.bgColor=backGround.options[backGround.selectedIndex].value)>
+    <option value="000000">Black
+    <option value="730200">Dark Red
+    <option value="231800">Dark Brown
+    <option value="044302">Dark Green
+    <option value="0D09A3">Dark Blue
+    <option value="444444">Dark Grey
+    <option value="ff4f4d">Red
+    <option value="EFE800">Yellow
+    <option value="05EF00">Green
+    <option value="0206FF">Blue
+    <option value="AE08EF">Violet
+    <option value="FF8C8A">Mauve
+    <option value="FFCCCC">Peach
+    <option value="FFCC99">Orange
+    <option value="D5CCBB">Tan
+    <option value="DDDDDD">Light Grey
+    <option value="FBFF73">Light Yellow
+    <option value="7CFF7D">Light Green
+    <option value="A6BEFF">Light Blue
+    <option value="FFFFFF" selected>White
+  </select>
+</form>
+</br>
+
+</button>
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <div class="overlay-content" style="font-family:arial">
+  
+  </div>
+</div>
 
 <center>
 <p id="pageonload"></p>
 </center>
+
+<script>
+function openNav() {
+  document.getElementById("myNav").style.display = "block";
+}
+
+function closeNav() {
+  document.getElementById("myNav").style.display = "none";
+}
+</script>
 
 <script>
 var pageurl = window.location.href;
@@ -190,7 +318,7 @@ stnicholas = "https://stnicholaschurchgodstone.easysearch.org.uk/search/?s=" + s
 stjohns = "https://stjohnsblindleyheath.easysearch.org.uk/search/?s=" + str;
 ststephens = "https://ststephenssouthgodstone.easysearch.org.uk/search/?s=" + str;
 chithurst = "https://stmchithurst.easysearch.org.uk/search/?s=" +str;
-stedham = "https://sipc.easysearch.org.uk/search/?s=" +str;
+steadham = "https://sipc.easysearch.org.uk/search/?s=" +str;
 guildford = "https://stpeteressharedchurch.easysearch.org.uk/search/?s=" + str;
 kaana = "https://kaana.easysearch.org.uk/search/?s=" + str;
 wikipedia = "https://en.wikipedia.org/w/index.php?go=Go&search=" + str;
@@ -206,7 +334,7 @@ pinterest = "https://www.pinterest.co.uk/search/pins/?q=" + str;
 reddit = "https://www.reddit.com/search/?q=" + str;
 searchterm = str.replace(/%20/g, " ");
 
-document.getElementById("pageonload").innerHTML = "<button class='placeholder' style='color:black;cursor: default;font-size:25px;border:3px solid black'><b>Search</b><i><b> Engine </b></i><b>Select</b></button></br></br><button class='placeholder' style='color:black;cursor: default;font-size:25px;'>You're searching for <i>" + searchterm + "</i>.</button></br><button class='placeholder' style='color:black;cursor: default;font-size:25px;'>Choose a search engine to continue:</button></br><button class='google' onclick='window.location.href=`" + google + "`;'><i class='fa fa-google'></i> Google</button><button class='placeholder'></button><button class='bing' onclick='window.location.href=`" + bing + "`;'><i class='fa fa-search'></i> Microsoft Bing</button><button class='placeholder'></button><button class='yahoo' onclick='window.location.href=`" + yahoo + "`;'><i class='fa fa-yahoo'></i> Yahoo</button><button class='placeholder'></button><button class='yandex' onclick='window.location.href=`" + yandex + "`;'><i class='fa fa-search'></i> Yandex</button></br></br><button class='easysearch' onclick='window.location.href=`" + foaa + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> Friends of Alton Abbey</button><button class='placeholder'></button><button class='easysearch' onclick='window.location.href=`" + stnicholas + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> St. Nicholas', Godstone</button><button class='placeholder'><button class='easysearch' onclick='window.location.href=`" + stjohns + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> St. John's, Blindley Heath</button></br><button class='placeholder'></button><button class='easysearch' onclick='window.location.href=`" + ststephens + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> St. Stephen's, South Godstone</button><button class='placeholder'><button class='easysearch' onclick='window.location.href=`" + stedham + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> Steadham & Iping</button></br><button class='placeholder'></button><button class='easysearch' onclick='window.location.href=`" + chithurst + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> St. Mary's, Chithurst</button><button class='placeholder'><button class='easysearch' onclick='window.location.href=`" + kaana + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> Kaana</button><button class='placeholder'></button><button class='easysearch' onclick='window.location.href=`" + guildford + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> St. Peter's, Guildford</button></br><button class='special' onclick='window.location.href=`" + wikipedia + "`;'> Wikipedia</button><button class='placeholder'></button><button class='special' onclick='window.location.href=`" + bbc + "`;'> BBC</button><button class='placeholder'></button><button class='shopping' onclick='window.location.href=`" + ebay + "`;'> eBay</button><button class='placeholder'></button><button class='shopping' onclick='window.location.href=`" + abebooks + "`;'> AbeBooks</button><button class='placeholder'></button><button class='shopping' onclick='window.location.href=`" + wob + "`;'> WorldOfBooks</button></br><button class='social' onclick='window.location.href=`" + facebook + "`;'><i class='fa fa-facebook'></i> </button><button class='placeholder'></button><button class='social' onclick='window.location.href=`" + instagram + "`;'><i class='fa fa-instagram'></i></button><button class='placeholder'></button><button class='social' onclick='window.location.href=`" + twitter + "`;'><i class='fa fa-twitter'></i></button><button class='placeholder'></button><button class='social' onclick='window.location.href=`" + youtube + "`;'><i class='fa fa-youtube'></i></button><button class='placeholder'></button><button class='social' onclick='window.location.href=`" + pinterest + "`;'><i class='fa fa-pinterest'></i></button><button class='placeholder'></button><button class='social' onclick='window.location.href=`" + reddit + "`;'><i class='fa fa-reddit'></i></button><title>" + searchterm + " - Search Engine Select</title>";
+document.getElementById("pageonload").innerHTML = "<button class='placeholder' style='color:black;cursor: default;font-size:25px;border:3px solid black;background-color:white;'><b>Search</b><i><b> Engine </b></i><b>Select</b></button></br></br><button class='placeholder' style='color:black;cursor: default;font-size:25px;background-color:white;'>You're searching for <i>" + searchterm + "</i>.</button></br></br><button class='placeholder' style='color:black;cursor: default;font-size:25px;background-color:white;'>Choose a search engine to continue:</button></br><button class='google' onclick='window.location.href=`" + google + "`;'><i class='fa fa-google'></i> Google</button><button class='placeholder'></button><button class='bing' onclick='window.location.href=`" + bing + "`;'><i class='fa fa-search'></i> Microsoft Bing</button><button class='placeholder'></button><button class='yahoo' onclick='window.location.href=`" + yahoo + "`;'><i class='fa fa-yahoo'></i> Yahoo</button><button class='placeholder'></button><button class='yandex' onclick='window.location.href=`" + yandex + "`;'><i class='fa fa-search'></i> Yandex</button></br></br><button class='easysearch' onclick='window.location.href=`" + foaa + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> Friends of Alton Abbey</button><button class='placeholder'></button><button class='easysearch' onclick='window.location.href=`" + stnicholas + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> St. Nicholas', Godstone</button><button class='placeholder'><button class='easysearch' onclick='window.location.href=`" + stjohns + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> St. John's, Blindley Heath</button></br><button class='placeholder'></button><button class='easysearch' onclick='window.location.href=`" + ststephens + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> St. Stephen's, South Godstone</button><button class='placeholder'><button class='easysearch' onclick='window.location.href=`" + steadham + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> Steadham & Iping</button></br><button class='placeholder'></button><button class='easysearch' onclick='window.location.href=`" + chithurst + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> St. Mary's, Chithurst</button><button class='placeholder'><button class='easysearch' onclick='window.location.href=`" + kaana + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> Kaana</button><button class='placeholder'></button><button class='easysearch' onclick='window.location.href=`" + guildford + "`;'><img src='https://foaa.easysearch.org.uk/favicon.ico' style='vertical-align:middle;max-width:20px;'> St. Peter's, Guildford</button></br><button class='special' onclick='window.location.href=`" + wikipedia + "`;'> Wikipedia</button><button class='placeholder'></button><button class='special' onclick='window.location.href=`" + bbc + "`;'> BBC</button><button class='placeholder'></button><button class='shopping' onclick='window.location.href=`" + ebay + "`;'> eBay</button><button class='placeholder'></button><button class='shopping' onclick='window.location.href=`" + abebooks + "`;'> AbeBooks</button><button class='placeholder'></button><button class='shopping' onclick='window.location.href=`" + wob + "`;'> WorldOfBooks</button></br><button class='social' onclick='window.location.href=`" + facebook + "`;'><i class='fa fa-facebook'></i> </button><button class='placeholder'></button><button class='social' onclick='window.location.href=`" + instagram + "`;'><i class='fa fa-instagram'></i></button><button class='placeholder'></button><button class='social' onclick='window.location.href=`" + twitter + "`;'><i class='fa fa-twitter'></i></button><button class='placeholder'></button><button class='social' onclick='window.location.href=`" + youtube + "`;'><i class='fa fa-youtube'></i></button><button class='placeholder'></button><button class='social' onclick='window.location.href=`" + pinterest + "`;'><i class='fa fa-pinterest'></i></button><button class='placeholder'></button><button class='social' onclick='window.location.href=`" + reddit + "`;'><i class='fa fa-reddit'></i></button><title>" + searchterm + " - Search Engine Select</title>";
 </script>
 
 </body>
